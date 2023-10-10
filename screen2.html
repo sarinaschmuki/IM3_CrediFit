@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registriere dich für Credifit</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/style1.css">
+</head>
+
+
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <input type="text" id="name" placeholder="Name" required><br>
+            <input type="email" id="email" placeholder="E-Mail" required><br>
+            <input type="text" id="studiengang" placeholder="Studiengang" required><br>
+            <input type="password" id="password" placeholder="Passwort" required><br>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const studiengang = document.getElementById('studiengang').value;
+            const password = document.getElementById('password').value;
+            alert(`Congratulations, ${name}! You have successfully signed up with email: ${email}, Studiengang: ${studiengang}, and password: ${password}`);
+        });
+    </script>
+</body>
+
+</html>

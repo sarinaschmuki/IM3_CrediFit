@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/style1.css">
 </head>
+
+
 <body>
     <div class="logo-container">
         <img class="logo" src="Bilder/Credifit.png" alt="Credifit Logo">
@@ -17,4 +19,21 @@
         </header>
     </div>
 </body>
+<div class="container">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <input type="text" id="name" placeholder="Name" required><br>
+        <input type="email" id="email" placeholder="E-Mail" required><br>
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        alert(`Welcome, ${name}! You have successfully signed up with email: ${email}`);
+    });
+</script>
 </html>

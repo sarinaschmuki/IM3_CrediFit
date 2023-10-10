@@ -1,19 +1,46 @@
 /* CSS-Stil für das Logo-Container */
 .logo-container {
     text-align: center; /* Zentriert den Inhalt horizontal */
-    padding-top: 20px; /* Fügt oben Abstand hinzu */
+    padding-top: 10px; /* Fügt oben Abstand hinzu */
 }
 
 /* CSS-Stil für das Logo */
 .logo {
-    max-width: 652px; /* Maximale Breite des Logos */
+    max-width: 300px; /* Maximale Breite des Logos */
     height: 563px;
     display: block; /* Macht das Logo zu einem Blockelement */
-    margin: 0 auto; /* Zentriert das Logo horizontal im Container */
+    margin: 0 auto 20px; /* Zentriert das Logo horizontal im Container */
 }
 
 /* CSS-Stil für den Titel darunter */
 .container {
     text-align: center; /* Zentriert den Inhalt horizontal */
     padding: 20px 0; /* Fügt oben und unten Abstand hinzu */
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+/* CSS-Stil für das Log In darunter */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
 }
