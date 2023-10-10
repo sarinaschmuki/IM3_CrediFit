@@ -1,5 +1,35 @@
-body {background-color:#FDDF74;
-    width: 1080px;
-    height: 1920px;
-    flex-shrink: 0}
-
+/* Grundlegende Styles für alle Bildschirmgrößen */
+body {
+    background-color: #FDDF74;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Media Query für kleinere Bildschirme (z.B. Smartphones) */
+  @media (max-width: 768px) {
+    body {
+      width: 100%;
+      height: auto;
+    }
+  }
+  
+  /* Media Query für mittlere Bildschirme (z.B. Tablets) */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    body {
+      width: 80%;
+      max-width: 1080px;
+      height: auto;
+    }
+  }
+  
+  /* Media Query für größere Bildschirme (z.B. Desktops) */
+  @media (min-width: 1025px) {
+    body {
+      width: 1080px;
+      height: 1920px;
+    }
+  }
+  
+  

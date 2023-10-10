@@ -1,0 +1,19 @@
+/* CSS-Stil für das Logo-Container */
+.logo-container {
+    text-align: center; /* Zentriert den Inhalt horizontal */
+    padding-top: 20px; /* Fügt oben Abstand hinzu */
+}
+
+/* CSS-Stil für das Logo */
+.logo {
+    max-width: 652px; /* Maximale Breite des Logos */
+    height: 563px;
+    display: block; /* Macht das Logo zu einem Blockelement */
+    margin: 0 auto; /* Zentriert das Logo horizontal im Container */
+}
+
+/* CSS-Stil für den Titel darunter */
+.container {
+    text-align: center; /* Zentriert den Inhalt horizontal */
+    padding: 20px 0; /* Fügt oben und unten Abstand hinzu */
+}
