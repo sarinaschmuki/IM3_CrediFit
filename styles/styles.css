@@ -1,1 +1,5 @@
-body {background-color: aqua;}
+body {background-color:#FDDF74;
+    width: 1080px;
+    height: 1920px;
+    flex-shrink: 0}
+
