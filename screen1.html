@@ -8,14 +8,12 @@
     <link rel="stylesheet" href="styles/style1.css">
 </head>
 
-
 <body>
-    <div class="logo-container">
-        <img class="logo" src="Bilder/Credifit.png" alt="Credifit Logo">
-    </div>
- 
-</body>
-<div class="container">
+    <div class="container">
+        <!-- Logo Container in anderen Container einbinden -->
+        <div class="logo-container">
+            <img class="logo" src="Bilder/CrediFit Logo.png" alt="Credifit Logo">
+        </div>
     <h2>Bei CrediFit einloggen</h2>
     <form id="loginForm">
         <input type="text" id="name" placeholder="Name" required><br>
@@ -27,7 +25,9 @@
         </div>
     </body>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/supabase@1"></script>
 
+</body>
 <script>
     document.getElementById('loginForm').addEventListener('submit', function(event) {
         event.preventDefault();
