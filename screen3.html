@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -6,37 +5,44 @@
     <title>Sport hinzufügen</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/style3.css">
-   
+
 </head>
 <body>
-    <h2>Dein Sport hinzufügen</h2>
-    <div class="ring-container">
-        <div class="ring"></div>
-    </div>
+    <div class="container">
+            <!-- Logo Container in anderen Container einbinden -->
+            <div class="logo-container">
+                <img class="logo" src="Bilder/CrediFit Logo.png" alt="Credifit Logo">
+            </div>
+        <h2>Dein Sport hinzufügen</h2>
+        
+        <div class="ring-container">
+            <div class="ring"></div>
+        </div>
     
-    <div class="text-input-container">
-        <input type="text" class="text-input" placeholder="Sportart">
-    </div>
+        <div class="text-input-container">
+            <input type="text" class="text-input" placeholder="Sportart">
+        </div>
 
-    <div class="text-input-container">
-        <input type="date" class="text-input" placeholder="Datum">
-        <select class="text-input">
-            <option value="1">30 Minuten</option>
-            <option value="2">1 Stunde</option>
-            <option value="3">1.5 Stunden</option>
-            <option value="4">2 Stunden</option>
-            <option value="5">2.5 Stunden</option>
-            <option value="6">3 Stunden</option>
-            <option value="7">3.5 Stunden</option>
-            <option value="8">4 Stunden</option>
-            <option value="9">4.5 Stunden</option>
-            <option value="10">5 Stunden</option>
-            <!-- Weitere Stunden-Optionen hier hinzufügen -->
-        </select>
-    </div>
+        <div class="text-input-container">
+            <input type="date" class="text-input" placeholder="Datum">
+            <select class="text-input">
+                <option value="1">30 Minuten</option>
+                <option value="2">1 Stunde</option>
+                <option value="3">1.5 Stunden</option>
+                <option value="4">2 Stunden</option>
+                <option value="5">2.5 Stunden</option>
+                <option value="6">3 Stunden</option>
+                <option value="7">3.5 Stunden</option>
+                <option value="8">4 Stunden</option>
+                <option value="9">4.5 Stunden</option>
+                <option value="10">5 Stunden</option>
+                <!-- Weitere Stunden-Optionen hier hinzufügen -->
+            </select>
+        </div>
 
-    <button onclick="Sporthinzufügen()">Hinzufügen</button>
-    <button onclick="resetSport()">Reset</button>
+        <button onclick="Sporthinzufügen()">Hinzufügen</button>
+        <button onclick="resetTimer()">Reset</button>
+    </div>
 
     <script>
         let isRunning = false;
