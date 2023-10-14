@@ -1,151 +1,163 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sport hinzufügen</title>
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/style3.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .container {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-
-        h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .text-input-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .text-input {
-            width: 200px;
-            padding: 10px;
-            margin: 0 10px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-
-        button {
-            width: 100px;
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        .ring-container {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto;
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .ring {
-            width: 100%;
-            height: 100%;
-            border: 10px solid transparent;
-            border-top-color: #007bff;
-            border-radius: 50%;
-            position: absolute;
-            transform: rotate(0deg);
-            transition: transform 1s linear;
-            animation: fillRing 2s linear forwards;
-        }
-
-        @keyframes fillRing {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
+    <!-- ... (vorheriger Head-Teil) ... -->
 </head>
 <body>
     <div class="container">
         <h2>Dein Sport hinzufügen</h2>
         
         <div class="ring-container">
-            <div class="ring"></div>
+            <svg class="ring-svg" viewBox="0 0 150 150">
+                <circle cx="75" cy="75" r="60" fill="none" stroke="#ccc" stroke-width="20"></circle>
+                <circle id="ring-fill" cx="75" cy="75" r="60" fill="none" stroke="#007bff" stroke-width="20" stroke-dasharray="0 377"></circle>
+                <g id="icon-group">
+                    <circle cx="75" cy="75" r="55" fill="transparent"></circle>
+                    <text id="sport-icon" x="75" y="75" font-size="30" fill="white" text-anchor="middle" alignment-baseline="middle" transform="rotate(-90 75 75)">🏃</text> <!-- Rennendes Emoji (um 180 Grad gedreht) -->
+                </g>
+                <text id="percentage" x="75" y="75" font-size="20" fill="#007bff" text-anchor="middle" alignment-baseline="middle"></text>
+            </svg>
         </div>
     
         <div class="text-input-container">
-            <input type="text" class="text-input" placeholder="Sportart">
+            <input type="text" class="text-input" placeholder="Sportart" id="sport-input">
         </div>
 
         <div class="text-input-container">
             <input type="date" class="text-input" placeholder="Datum">
             <select id="hours-select" class="text-input">
-                <option value="30">30 Minuten</option>
-                <option value="60">1 Stunde</option>
-                <option value="90">1.5 Stunden</option>
-                <option value="120">2 Stunden</option>
-                <option value="150">2.5 Stunden</option>
-                <option value="180">3 Stunden</option>
-                <option value="210">3.5 Stunden</option>
-                <option value="240">4 Stunden</option>
-                <option value="270">4.5 Stunden</option>
-                <option value="300">5 Stunden</option>
+                <option value="1">1 Stunde</option>
+                <option value="2">2 Stunden</option>
+                <option value="3">3 Stunden</option>
+                <option value="4">4 Stunden</option>
+                <option value="5">5 Stunden</option>
                 <!-- Weitere Stunden-Optionen hier hinzufügen -->
             </select>
         </div>
 
         <button onclick="Hinzufügen()">Hinzufügen</button>
         <button onclick="resetRing()">Reset</button>
+        <button class="overview-button" onclick="showOverview()">Übersicht deiner Sportaktivitäten</button>
+
+
+        <div class="congratulation">Gratulation, du hast 1 ECTS erreicht!</div>
+    </div>
+
+    <div class="confetti-container">
+        <!-- Konfettibomben-Emojis (🎉) hier einfügen -->
     </div>
 
     <script>
-        let totalHours = 0;
+        let totalMinutes = 0;
+        let congratsShown = false;
+        let emojiRotation = 0;
 
         function Hinzufügen() {
             const select = document.getElementById('hours-select');
             const selectedValue = parseInt(select.options[select.selectedIndex].value);
 
-            totalHours += selectedValue;
-            if (totalHours >= 600) { // 10 Stunden entsprechen 600 Minuten
-                totalHours = 600;
+            totalMinutes += selectedValue * 60; // Umrechnung in Minuten
+            if (totalMinutes >= 1800) { // 30 Stunden entsprechen 1800 Minuten
+                totalMinutes = 1800;
+                if (!congratsShown) {
+                    showCongratulations();
+                    createConfetti();
+                }
             }
 
-            const ring = document.querySelector(".ring");
-            ring.style.animation = "none";
-            ring.style.strokeDasharray = "0";
-            setTimeout(() => {
-                ring.style.animation = "fillRing 2s linear forwards";
-                const fillPercentage = (totalHours / 600) * 100;
-                ring.style.strokeDasharray = `${fillPercentage}px 400px`;
-            }, 0);
+            const ringFill = document.getElementById('ring-fill');
+            const fillPercentage = (totalMinutes / 1800) * 100;
+            const dashLength = (fillPercentage / 100) * 377;
+            ringFill.style.strokeDasharray = `${dashLength} 377`;
+
+            const sportInput = document.getElementById('sport-input');
+            updateSportIcon(fillPercentage, sportInput.value);
+            animateEmoji();
+            updatePercentage(fillPercentage);
         }
 
         function resetRing() {
-            totalHours = 0;
-            const ring = document.querySelector(".ring");
-            ring.style.animation = "none";
-            ring.style.strokeDasharray = "0";
+            totalMinutes = 0;
+            congratsShown = false;
+            emojiRotation = 0;
+            hideCongratulations();
+            removeConfetti();
+            const ringFill = document.getElementById('ring-fill');
+            ringFill.style.strokeDasharray = "0 377";
+            updateSportIcon(0, '');
+            updatePercentage(0);
+        }
+
+        function showCongratulations() {
+            const congrats = document.querySelector(".congratulation");
+            congrats.style.display = "block";
+            congratsShown = true;
+        }
+
+        function hideCongratulations() {
+            const congrats = document.querySelector(".congratulation");
+            congrats.style.display = "none";
+        }
+
+        function updateSportIcon(fillPercentage, sport) {
+            const sportIcon = document.getElementById('sport-icon');
+            let emoji = '🏃'; // Standard-Emoji (Rennendes Emoji)
+            
+            // Überprüfe die Eingabe im Sportart-Feld
+            if (sport.toLowerCase() === 'gym') {
+                emoji = '🏋🏻‍♀️';
+            } else if (sport.toLowerCase() === 'schwimmen') {
+                emoji = '🏊🏻';
+            } else if (sport.toLowerCase() === 'surfen') {
+                emoji = '🏄🏻';
+            } else if (sport.toLowerCase() === 'golfen') {
+                emoji = '🏌🏼';
+            } else if (sport.toLowerCase() === 'yoga') {
+                emoji = '🧘‍♀️';
+            } else if (sport.toLowerCase() === 'fussball') {
+                emoji = '⚽️';
+            } else if (sport.toLowerCase() === 'rudern') {
+                emoji = '🚣‍♀️';
+            }
+
+            emojiRotation += (360 * fillPercentage) / 100; // Berechnet die Drehung des Emojis
+            sportIcon.textContent = emoji; // Ändere den Text des Emoji
+            sportIcon.style.transform = `rotate(${emojiRotation}deg)`; // Drehung des Emojis
+        }
+
+        function animateEmoji() {
+            const emoji = document.getElementById('sport-icon');
+            emoji.style.transform = 'scale(1.2)'; // Vergrößert das Emoji
+            setTimeout(() => {
+                emoji.style.transform = 'scale(1)'; // Bringt das Emoji zur Normalgröße zurück
+            }, 1000);
+        }
+
+        function createConfetti() {
+            const confettiContainer = document.querySelector(".confetti-container");
+            const confettiCount = 50; // Anzahl der Konfettibomben
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement("div");
+                confetti.classList.add("confetti");
+                const randomX = Math.random() * window.innerWidth;
+                const randomDelay = Math.random() * 5; // Zufällige Verzögerung für den Regen-Effekt
+                const randomDuration = (Math.random() * 5) + 5; // Zufällige Dauer für den Regen-Effekt
+                confetti.style.left = `${randomX}px`;
+                confetti.style.animationDelay = `${randomDelay}s`;
+                confetti.style.animationDuration = `${randomDuration}s`;
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        function removeConfetti() {
+            const confettiContainer = document.querySelector(".confetti-container");
+            confettiContainer.innerHTML = ''; // Entfernt alle Konfettibomben
+        }
+
+        function updatePercentage(percentage) {
+            const percentageText = document.getElementById('percentage');
+            percentageText.textContent = `${Math.round(percentage)}%`;
         }
     </script>
 </body>
