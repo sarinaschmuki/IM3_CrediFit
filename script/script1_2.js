@@ -1,7 +1,7 @@
 import { supa } from "../config/config.js";
 
+//ANMELDUNG 
 
-//ANMELDUNG - STUDIENGANG
 // Funktion, um Studiengänge aus der Supabase-Tabelle abzurufen
 async function fetchStudiengänge() {
   try {
@@ -24,5 +24,32 @@ async function fetchStudiengänge() {
     console.error("Fehler beim Abrufen der Studiengänge:", error);
   }
 }
+// Event-Listener für das Formular hinzufügen
+const signupForm = document.getElementById("signupForm");
+signupForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const studiengang = document.getElementById("studiengang").value;
+
+  try {
+    const { user, error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    if (error) {
+      console.error("Fehler bei der Registrierung:", error.message);
+      return;
+    }
+
+    // Weiterleitung auf Screen3
+    window.location.href = "screen3.html";
+  } catch (error) {
+    console.error("Fehler bei der Registrierung:", error.message);
+  }
+});
 // Rufe die Funktion auf, um Studiengänge zu laden
 fetchStudiengänge();
