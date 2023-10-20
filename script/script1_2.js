@@ -35,7 +35,7 @@ signupForm.addEventListener("submit", async (e) => {
   const studiengang = document.getElementById("studiengang").value;
 
   try {
-    const { user, error } = await supabase.auth.signUp({
+    const { User, error } = await supabase.auth.signUp({
       email,
       password,
     });
@@ -44,6 +44,20 @@ signupForm.addEventListener("submit", async (e) => {
       console.error("Fehler bei der Registrierung:", error.message);
       return;
     }
+// Nach erfolreicher Registrierung Benutzerdaten in "User" Tabelle speichern
+const { data, error: insertError } = await supa.from("User").upsert([
+  {
+    email,
+    name,
+    password,
+    study_id,
+  },
+]);
+
+if (insertError) {
+  console.error("Fehler beim Speichern der Benutzerdaten:", insertError);
+  return;
+}
 
     // Weiterleitung auf Screen3
     window.location.href = "screen3.html";
