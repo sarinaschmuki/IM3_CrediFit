@@ -150,8 +150,21 @@
             </svg>
         </div>
     
-        <div class="text-input-container">
-            <input type="text" class="text-input" placeholder="Sportart" id="sport-input">
+      
+            <div class="text-input-container">
+                <input type="sportart" class="text-input" placeholder="Sportart">
+                <select id="hours-select" class="text-input">
+                    <option value="30">Gym</option>
+                    <option value="60">Joggen</option>
+                    <option value="90">Schwimmen</option>
+                    <option value="120">Fussball</option>
+                    <option value="150">Tennis</option>
+                    <option value="180">Ski fahren</option>
+                    <option value="210">Yoga</option>
+                    <option value="240">Reiten</option>
+                    <option value="270">Andere Sportart</option>
+                    <!-- Weitere Sportart-Optionen hier hinzufügen -->
+                </select>
         </div>
 
         <div class="text-input-container">
@@ -176,7 +189,7 @@
         <button class="overview-button" onclick="showOverview()"> <a href="screen4.html">Übersicht deiner Sportaktivitäten</a></p></button>
 
 
-        <div class="congratulation">Gratulation, du hast 1 ECTS erreicht!</div>
+        <div class="congratulation">Gratulation, du hast 2 ECTS erreicht!</div>
     </div>
 
     <div class="confetti-container">
@@ -238,28 +251,34 @@
             let emoji = '🏃'; // Standard-Emoji (Rennendes Emoji)
             
             // Überprüfe die Eingabe im Sportart-Feld
-            if (sport.toLowerCase() === 'gym') {
+            if (sport.toLowerCase() === 'Gym') {
                 emoji = '🏋🏻‍♀️';
-            } else if (sport.toLowerCase() === 'schwimmen') {
+            } else if (sport.toLowerCase() === 'Schwimmen') {
                 emoji = '🏊🏻';
-            } else if (sport.toLowerCase() === 'surfen') {
+            } else if (sport.toLowerCase() === 'Surfen') {
                 emoji = '🏄🏻';
-            } else if (sport.toLowerCase() === 'golfen') {
+            } else if (sport.toLowerCase() === 'Golfen') {
                 emoji = '🏌🏼';
-            } else if (sport.toLowerCase() === 'yoga') {
+            } else if (sport.toLowerCase() === 'Yoga') {
                 emoji = '🧘‍♀️';
-            } else if (sport.toLowerCase() === 'fussball') {
+            } else if (sport.toLowerCase() === 'Fussball') {
                 emoji = '⚽️';
-            } else if (sport.toLowerCase() === 'rudern') {
+            } else if (sport.toLowerCase() === 'Rudern') {
                 emoji = '🚣‍♀️';
-            } else if (sport.toLowerCase() === 'reiten') {
+            } else if (sport.toLowerCase() === 'Reiten') {
                 emoji = '🏇';
-            } else if (sport.toLowerCase() === 'tennis') {
+            } else if (sport.toLowerCase() === 'Tennis') {
                 emoji = '🎾';
-            } else if (sport.toLowerCase() === 'badminton') {
+            } else if (sport.toLowerCase() === 'Badminton') {
                 emoji = '🏸';
-
-            
+            } else if (sport.toLowerCase() === 'Basketball') {
+                emoji = '⛹🏻';
+            } else if (sport.toLowerCase() === 'Ski fahren') {
+                emoji = '⛷';
+            } else if (sport.toLowerCase() === 'Boxen') {
+                emoji = '🥊';
+            } else if (sport.toLowerCase() === 'Skateboard') {
+                emoji = '🛹';
             }
 
             emojiRotation += (360 * fillPercentage) / 100; // Berechnet die Drehung des Emojis
@@ -283,8 +302,8 @@
                 const confetti = document.createElement("div");
                 confetti.classList.add("confetti");
                 const randomX = Math.random() * window.innerWidth;
-                const randomDelay = Math.random() * 5; // Zufällige Verzögerung für den Regen-Effekt
-                const randomDuration = (Math.random() * 5) + 5; // Zufällige Dauer für den Regen-Effekt
+                const randomDelay = Math.random() * 5; //  Verzögerung für den Regen-Effekt
+                const randomDuration = (Math.random() * 3) + 5; //  Dauer für den Regen-Effekt
                 confetti.style.left = `${randomX}px`;
                 confetti.style.animationDelay = `${randomDelay}s`;
                 confetti.style.animationDuration = `${randomDuration}s`;

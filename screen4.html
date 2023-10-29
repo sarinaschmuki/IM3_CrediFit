@@ -8,8 +8,35 @@
     <link rel="stylesheet" href="styles/style1.css">
     <style>
         .white-container {
-            background-color: white;
             /* Füge hier weitere CSS-Stile für die Container hinzu, falls gewünscht */
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        
+        .sport-activity {
+            width: 100px;
+            height: 100px;
+            background-color: white; /* Weiß einfärben */
+            border: 1px solid #ccc; /* Rand hinzufügen */
+            text-align: center;
+            line-height: 100px;
+            font-size: 18px;
+            margin: 10px;
+            float: left;
+            box-sizing: border-box; /* Rand und Padding berücksichtigen */
+            border-radius: 10px; /* Ecken abrunden */
+            overflow: hidden; /* Überlauf verstecken */
+        }
+
+        .sport-activity:nth-child(odd) {
+            clear: left; /* Nach jedem ungeraden Element den Zeilenumbruch erzwingen */
+        }
+
+        .center-container {
+            margin: 0 auto; /* Zentrieren */
+            width: fit-content; /* Containergröße an den Inhalt anpassen */
         }
     </style>
 </head>
@@ -22,36 +49,26 @@
         </div>
         <h2>Deine Sportaktivitäten</h2>
         
-        <div class="white-container">
-            <!-- Erster Container -->
-        </div>
-        <div class="white-container">
-            <!-- Zweiter Container -->
-        </div>
-        <div class="white-container">
-            <!-- Dritter Container -->
-        </div>
-        <div class="white-container">
-            <!-- Vierter Container -->
-        </div>
-        <div class="white-container">
-            <!-- Fünfter Container -->
-        </div>
-        <div class="white-container">
-            <!-- Sechster Container -->
-        </div>
-        <div class="white-container">
-            <!-- Siebter Container -->
-        </div>
-        <div class="white-container">
-            <!-- Achter Container -->
-        </div>
-        <div class="white-container">
-            <!-- Neunter Container -->
-        </div>
-        <div class="white-container">
-            <!-- Zehnter Container -->
+        <div class="center-container">
+            <div class="white-container">
+                <div class="sport-activity">Sport 1</div>
+                <div class="sport-activity">Sport 2</div>
+                <div class="sport-activity">Sport 3</div>
+                <div class="sport-activity">Sport 4</div>
+                <div class="sport-activity">Sport 5</div>
+                <div class="sport-activity">Sport 6</div>
+                <div class="sport-activity">Sport 7</div>
+                <div class="sport-activity">Sport 8</div>
+                <div class="sport-activity">Sport 9</div>
+                <div class="sport-activity">Sport 10</div>
+            </div>
+            
+            <button class="add-activity-button"> <a href="screen3.html">Sportaktivität hinzufügen</a></p> </button> 
         </div>
     </div>
+
 </body>
+    
+
+
 </html>
