@@ -1,6 +1,6 @@
 import { supa } from "../config/config.js";
 
-//ANMELDUNG 
+// Registrierung bei Credifit 
 
 // Funktion, um Studiengänge aus der Supabase-Tabelle abzurufen
 async function fetchStudiengänge() {

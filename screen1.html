@@ -1,13 +1,15 @@
+<!-- Anmeldung bei Credifit -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bei CrediFit einloggen</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/style1.css">
 </head>
-
 <body>
     <div class="container">
         <!-- Logo Container in anderen Container einbinden -->
@@ -16,23 +18,24 @@
         </div>
     <h2>Bei CrediFit einloggen</h2>
     <form id="loginForm">
-        <input type="text" id="name" placeholder="Name" required><br>
         <input type="email" id="email" placeholder="E-Mail" required><br>
+        <input type="text" id="password" placeholder="Passwort" required><br>
         <button type="submit">Login</button> <a href="screen3.html"></a>
     </form>
+      <p id="errorContainer" style="color: indianred;"></p> <!-- Container für Fehlermeldung -->
     <body>
             <p>Neu bei CrediFit? <a href="screen2.html">Jetzt registrieren</a></p>
         </div>
     </body>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/supabase@1"></script>
+<script type="module" src="script/script1.js"></script> 
 
 </body>
 <script>
     document.getElementById('loginForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
         alert(`Welcome, ${name}! You have successfully signed up with email: ${email}`);
     });
 </script>
