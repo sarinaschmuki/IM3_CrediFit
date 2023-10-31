@@ -1,9 +1,12 @@
+<!-- Startbildschirm -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sport hinzufügen</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/style3.css">
     
@@ -29,7 +32,6 @@
                 <text id="sport-icon" x="75" y="75" font-size="30" fill="white" text-anchor="middle" alignment-baseline="middle"></text>
             </svg>
         </div>
-    
         <div class="text-input-container">
             <input type="date" class="text-input" placeholder="Datum">
             <select id="hours-select" class="text-input">
@@ -48,10 +50,8 @@
         </div>
 
         <div class="text-input-container">
-            <select id="sport-select" class="text-input">
-                <option value="gym">Gym</option>
-                <option value="schwimmen">Schwimmen</option>
-                <option value="joggen">Joggen</option>
+            <select id="sportart" class="text-input">
+                <option value="" disabled selected>Sportart</option>
             </select>
         </div>
 
@@ -67,7 +67,7 @@
     <div class="confetti-container">
         <!-- Konfettibomben-Emojis (🎉) hier einfügen -->
     </div>
-
+    <script type="module" src="script/script3.js"></script> 
     <script>
         let totalMinutes = 0;
         let congratsShown = false;
@@ -118,25 +118,7 @@
             congrats.style.display = "none";
         }
 
-        function updateSportIcon() {
-            const sportSelect = document.getElementById('sport-select');
-            const sportIcon = document.getElementById('sport-icon');
-            const selectedSport = sportSelect.options[sportSelect.selectedIndex].value;
-            
-            let emoji = '🏃🏼‍♀️'; // Standard-Emoji (Laufendes Emoji)
-
-            if (selectedSport === 'gym') {
-                emoji = '🏋🏻‍♀️';
-            } else if (selectedSport === 'schwimmen') {
-                emoji = '🏊🏻‍♀️';
-            } else if (selectedSport === 'joggen') {
-                emoji = '🏃🏼‍♀️';
-            }
-
-            emojiRotation += (360 * (selectedValue / 60)); // Berechnet die Drehung des Emojis basierend auf ausgewählter Zeit
-            sportIcon.textContent = emoji; // Ändere den Text des Emoji
-            sportIcon.style.transform = `rotate(${emojiRotation}deg)`; // Drehung des Emojis
-        }
+        
 
         function animateEmoji() {
             const emoji = document.getElementById('sport-icon');
