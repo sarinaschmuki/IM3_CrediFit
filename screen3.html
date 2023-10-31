@@ -1,5 +1,3 @@
-<!-- Übersicht des Users bei Credifit -->
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -8,167 +6,30 @@
     <title>Sport hinzufügen</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/style3.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #FDDF74;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .container {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-
-        h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .text-input-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .text-input {
-            width: 200px;
-            padding: 10px;
-            margin: 0 10px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-
-        button {
-            width: 100px;
-            padding: 10px;
-            background-color: #FDDF74;
-            color: #fff;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        .overview-button {
-            width: 200px;
-            padding: 10px;
-            background-color: #FDDF74;
-            color: #fff;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        .ring-container {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .ring-svg {
-            width: 100%;
-            height: 100%;
-            transform: rotate(-90deg); /* Start bei 12 Uhr */
-        }
-
-        .emoji-icon {
-            width: 40px;
-            height: 40px;
-            fill: #FDDF74;
-            transition: transform 1s linear, transform 0.5s ease-in-out, scale 0.5s ease-in-out;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform-origin: center bottom;
-        }
-
-        .congratulation {
-            font-size: 18px;
-            font-weight: bold;
-            color: #FDDF74;
-            margin-top: 20px;
-            display: none;
-        }
-
-        .confetti-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #f39c12;
-            border-radius: 50%;
-            animation: confetti-fall 2s linear infinite;
-        }
-
-        @keyframes confetti-fall {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-    </style>
+    
 </head>
 <body>
     <div class="container">
-            <!-- Logo Container in anderen Container einbinden -->
-            <div class="logo-container">
-                <img class="logo" src="Bilder/CrediFit Logo.png" alt="Credifit Logo">
-            </div>
+        <!-- Logo Container in anderen Container einbinden -->
+        <div class="logo-container">
+            <span class="placeholder-left">Max Mustermann</span>
+            <a class="logout-button" href="screen1.html">Log Out</a>
+            <img class="logo" src="Bilder/CrediFit Logo.png" alt="Credifit Logo">
+        </div>
         <h2>Füge deine sportliche Aktivität hinzu und gewinne ECTS Punkte für das Semester. 60h Sport geben 2 ECTS.</h2>
         
         <div class="ring-container">
             <svg class="ring-svg" viewBox="0 0 150 150">
                 <circle cx="75" cy="75" r="60" fill="none" stroke="#ccc" stroke-width="20"></circle>
-                <circle id="ring-fill" cx="75" cy="75" r="60" fill="none" stroke="#007bff" stroke-width="20" stroke-dasharray="0 377"></circle>
+                <circle id="ring-fill" cx="75" cy="75" r="60" fill="none" stroke="#837C69" stroke-width="20" stroke-dasharray="0 377" ></circle>
                 <g id="icon-group">
                     <circle cx="75" cy="75" r="55" fill="transparent"></circle>
-                    <text id="sport-icon" x="75" y="75" font-size="30" fill="white" text-anchor="middle" alignment-baseline="middle" transform="rotate(90 75 75)">🏃</text> <!-- Rennendes Emoji (um 180 Grad gedreht) -->
+                    <text id="stunden" x="75" y="85" font-size="20" fill="#837C69" text-anchor="middle" alignment-baseline="middle" transform="rotate(90 75 75)"></text>
                 </g>
-                <text id="stunden" x="75" y="85" font-size="20" fill="#007bff" text-anchor="middle" alignment-baseline="middle"></text>
+                <text id="sport-icon" x="75" y="75" font-size="30" fill="white" text-anchor="middle" alignment-baseline="middle"></text>
             </svg>
         </div>
     
-      
-            <div class="text-input-container">
-                <input type="sportart" class="text-input" placeholder="Sportart">
-                <select id="hours-select" class="text-input">
-                    <option value="30">Gym</option>
-                    <option value="60">Joggen</option>
-                    <option value="90">Schwimmen</option>
-                    <option value="120">Fussball</option>
-                    <option value="150">Tennis</option>
-                    <option value="180">Ski fahren</option>
-                    <option value="210">Yoga</option>
-                    <option value="240">Reiten</option>
-                    <option value="270">Andere Sportart</option>
-                    <!-- Weitere Sportart-Optionen hier hinzufügen -->
-                </select>
-        </div>
-
         <div class="text-input-container">
             <input type="date" class="text-input" placeholder="Datum">
             <select id="hours-select" class="text-input">
@@ -186,12 +47,21 @@
             </select>
         </div>
 
+        <div class="text-input-container">
+            <select id="sport-select" class="text-input">
+                <option value="gym">Gym</option>
+                <option value="schwimmen">Schwimmen</option>
+                <option value="joggen">Joggen</option>
+            </select>
+        </div>
+
         <button onclick="Hinzufügen()">Hinzufügen</button>
         <button onclick="resetRing()">Reset</button>
         <button class="overview-button" onclick="showOverview()"> <a href="screen4.html">Übersicht deiner Sportaktivitäten</a></p></button>
 
-
-        <div class="congratulation">Gratulation, du hast 2 ECTS erreicht!</div>
+        <div class="congratulation">
+            Gratulation, du hast 2 ECTS erreicht!
+        </div>
     </div>
 
     <div class="confetti-container">
@@ -221,8 +91,8 @@
             const dashLength = (fillPercentage / 100) * 377;
             ringFill.style.strokeDasharray = `${dashLength} 377`;
 
-            const sportInput = document.getElementById('sport-input');
-            updateSportIcon(fillPercentage, sportInput.value);
+            updateStunden(totalMinutes);
+            updateSportIcon();
             animateEmoji();
         }
 
@@ -234,7 +104,7 @@
             removeConfetti();
             const ringFill = document.getElementById('ring-fill');
             ringFill.style.strokeDasharray = "0 377";
-            updateSportIcon(0, '');
+            updateStunden(0);
         }
 
         function showCongratulations() {
@@ -248,42 +118,22 @@
             congrats.style.display = "none";
         }
 
-        function updateSportIcon(fillPercentage, sport) {
+        function updateSportIcon() {
+            const sportSelect = document.getElementById('sport-select');
             const sportIcon = document.getElementById('sport-icon');
-            let emoji = '🏃'; // Standard-Emoji (Rennendes Emoji)
+            const selectedSport = sportSelect.options[sportSelect.selectedIndex].value;
             
-            // Überprüfe die Eingabe im Sportart-Feld
-            if (sport.toLowerCase() === 'Gym') {
+            let emoji = '🏃🏼‍♀️'; // Standard-Emoji (Laufendes Emoji)
+
+            if (selectedSport === 'gym') {
                 emoji = '🏋🏻‍♀️';
-            } else if (sport.toLowerCase() === 'Schwimmen') {
-                emoji = '🏊🏻';
-            } else if (sport.toLowerCase() === 'Surfen') {
-                emoji = '🏄🏻';
-            } else if (sport.toLowerCase() === 'Golfen') {
-                emoji = '🏌🏼';
-            } else if (sport.toLowerCase() === 'Yoga') {
-                emoji = '🧘‍♀️';
-            } else if (sport.toLowerCase() === 'Fussball') {
-                emoji = '⚽️';
-            } else if (sport.toLowerCase() === 'Rudern') {
-                emoji = '🚣‍♀️';
-            } else if (sport.toLowerCase() === 'Reiten') {
-                emoji = '🏇';
-            } else if (sport.toLowerCase() === 'Tennis') {
-                emoji = '🎾';
-            } else if (sport.toLowerCase() === 'Badminton') {
-                emoji = '🏸';
-            } else if (sport.toLowerCase() === 'Basketball') {
-                emoji = '⛹🏻';
-            } else if (sport.toLowerCase() === 'Ski fahren') {
-                emoji = '⛷';
-            } else if (sport.toLowerCase() === 'Boxen') {
-                emoji = '🥊';
-            } else if (sport.toLowerCase() === 'Skateboard') {
-                emoji = '🛹';
+            } else if (selectedSport === 'schwimmen') {
+                emoji = '🏊🏻‍♀️';
+            } else if (selectedSport === 'joggen') {
+                emoji = '🏃🏼‍♀️';
             }
 
-            emojiRotation += (360 * fillPercentage) / 100; // Berechnet die Drehung des Emojis
+            emojiRotation += (360 * (selectedValue / 60)); // Berechnet die Drehung des Emojis basierend auf ausgewählter Zeit
             sportIcon.textContent = emoji; // Ändere den Text des Emoji
             sportIcon.style.transform = `rotate(${emojiRotation}deg)`; // Drehung des Emojis
         }
@@ -323,7 +173,6 @@
             const stundenValue = minutes / 60; // Umrechnung von Minuten in Stunden
             stundenText.textContent = `${stundenValue.toFixed(2)}/60`; // Anzeige der Stunden im Verhältnis zu 60
         }
-
     </script>
 </body>
 </html>

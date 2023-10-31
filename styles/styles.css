@@ -1,6 +1,6 @@
 /* Grundlegende Styles für alle Bildschirmgrößen */
-body {
-    background-color: #FDDF74;
+* body {
+    background-color: #fff;
     margin: 0;
     display: flex;
     justify-content: center;
