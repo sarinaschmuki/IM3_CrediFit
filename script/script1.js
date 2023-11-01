@@ -20,6 +20,11 @@ loginForm.addEventListener("submit", async (e) => {
         console.error("Fehler bei der Anmeldung:", error.message);
         errorContainer.textContent = "Fehler bei der Anmeldung, bitte bestätige die E-Mail Adresse in deinem Postfach und überprüfe das Passwort.";
     } else {
+       
+     // Benutzerdaten im Local Storage speichern
+     localStorage.setItem('loggedInUser', JSON.stringify(user));
+   
+       
         // Anmeldung erfolgreich, weiterleiten auf Screen3
         window.location.href = "screen3.html";
 }

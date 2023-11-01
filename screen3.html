@@ -32,9 +32,10 @@
                 <text id="sport-icon" x="75" y="75" font-size="30" fill="white" text-anchor="middle" alignment-baseline="middle"></text>
             </svg>
         </div>
+
         <div class="text-input-container">
-            <input type="date" class="text-input" placeholder="Datum">
-            <select id="hours-select" class="text-input">
+            <input type="date" id="selectionDate" class="text-input" placeholder="Datum">
+            <select id="selectedTime" class="text-input">
                 <option value="30">30 Minuten</option>
                 <option value="60">1 Stunde</option>
                 <option value="90">1.5 Stunden</option>
@@ -50,12 +51,12 @@
         </div>
 
         <div class="text-input-container">
-            <select id="sportart" class="text-input">
+            <select id="sportart" required> class="text-input">
                 <option value="" disabled selected>Sportart</option>
             </select>
         </div>
 
-        <button onclick="Hinzufügen()">Hinzufügen</button>
+        <button onclick="saveSportSelection()">Hinzufügen</button>
         <button onclick="resetRing()">Reset</button>
         <button class="overview-button" onclick="showOverview()"> <a href="screen4.html">Übersicht deiner Sportaktivitäten</a></p></button>
 

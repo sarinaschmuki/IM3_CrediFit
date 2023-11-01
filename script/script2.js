@@ -58,6 +58,9 @@ if (insertError) {
   return;
 }
 
+// Benutzerdaten im Local Storage speichern
+localStorage.setItem('loggedInUser', JSON.stringify(user));
+
     // Weiterleitung auf Screen3
     window.location.href = "screen3.html";
 });
