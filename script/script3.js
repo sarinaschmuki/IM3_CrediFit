@@ -58,15 +58,16 @@ savebutton.addEventListener('click', function() {
   saveSportSelection();
 });
 async function saveSportSelection() {
+  let currentUserID;
+
   if (localStorage.getItem('loggedInUser')) {
     const userData = JSON.parse(localStorage.getItem('loggedInUser'));
     const  userID = userData.id;
     const dataUser = await supa.from("User").select().eq("user_id",userID);
-
-
-const currentUserID = dataUser.data[0].primary_id;
+  currentUserID = dataUser.data[0].primary_id;
 console.log(currentUserID); 
 }
+
   try {
       const sportartDropdown = document.getElementById("sportart");
       const selectedSportId = sportartDropdown.value; // Ausgewählte Sportart-ID
@@ -74,7 +75,6 @@ console.log(currentUserID);
     // Hier müssten Sie entsprechende IDs für die Datums- und Zeitfelder verwenden
     
       const selectedDate = document.getElementById("selectionDate").value; 
-
       const selectedTime = document.getElementById("selectedTime");
       const selectedTimeIndex = selectedTime.selectedIndex;
       const selectedTimeValue = selectedTime.options[selectedTimeIndex].value;

@@ -57,7 +57,6 @@
         </div>
 
         <button id="saveSportSelection" >Hinzufügen</button>
-        <button onclick="resetRing()">Reset</button>
         <button class="overview-button" onclick="showOverview()"> <a href="screen4.html">Übersicht deiner Sportaktivitäten</a></p></button>
 
         <div class="congratulation">
@@ -70,44 +69,6 @@
     </div>
     <script type="module" src="script/script3.js"></script> 
     <script>
-        let totalMinutes = 0;
-        let congratsShown = false;
-        let emojiRotation = 0;
-
-        function Hinzufügen() {
-            const select = document.getElementById('hours-select');
-            const selectedValue = parseInt(select.options[select.selectedIndex].value);
-
-            totalMinutes += selectedValue;
-            if (totalMinutes >= 1800) { // 30 Stunden entsprechen 1800 Minuten
-                totalMinutes = 1800;
-                if (!congratsShown) {
-                    showCongratulations();
-                    createConfetti();
-                }
-            }
-
-            const ringFill = document.getElementById('ring-fill');
-            const fillPercentage = (totalMinutes / 1800) * 100;
-            const dashLength = (fillPercentage / 100) * 377;
-            ringFill.style.strokeDasharray = `${dashLength} 377`;
-
-            updateStunden(totalMinutes);
-            updateSportIcon();
-            animateEmoji();
-        }
-
-        function resetRing() {
-            totalMinutes = 0;
-            congratsShown = false;
-            emojiRotation = 0;
-            hideCongratulations();
-            removeConfetti();
-            const ringFill = document.getElementById('ring-fill');
-            ringFill.style.strokeDasharray = "0 377";
-            updateStunden(0);
-        }
-
         function showCongratulations() {
             const congrats = document.querySelector(".congratulation");
             congrats.style.display = "block";
@@ -118,17 +79,6 @@
             const congrats = document.querySelector(".congratulation");
             congrats.style.display = "none";
         }
-
-        
-
-        function animateEmoji() {
-            const emoji = document.getElementById('sport-icon');
-            emoji.style.transform = 'scale(1.2)'; // Vergrößert das Emoji
-            setTimeout(() => {
-                emoji.style.transform = 'scale(1)'; // Bringt das Emoji zur Normalgröße zurück
-            }, 1000);
-        }
-
         function createConfetti() {
             const confettiContainer = document.querySelector(".confetti-container");
             const confettiCount = 50; // Anzahl der Konfettibomben
