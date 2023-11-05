@@ -1,8 +1,8 @@
 .logo-container {
-    text-align: center; /* Zentriert den Inhalt horizontal */
-    padding-top: 20px; /* Fügt oben Abstand hinzu */
+    text-align: center;
+    padding-top: 20px;
+    position: relative; /* Hinzugefügt */
 }
-
 .logo {
     max-width: 250px; /* Maximale Breite des Logos */
     display: block; /* Macht das Logo zu einem Blockelement */
@@ -17,6 +17,7 @@
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
     border-radius: 20px;
     text-align: center; /* Zentriert den Inhalt horizontal */
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
     background-color: #FCDE73;
 }
 body {
@@ -41,6 +42,7 @@ body {
 h2 {
     font-size: 24px;
     margin-bottom: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
 }
 
 .text-input-container {
@@ -55,6 +57,7 @@ h2 {
     margin: 0 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
 }
 
 button {
@@ -66,6 +69,7 @@ button {
     border-radius: 3px;
     cursor: pointer;
     margin-top: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
 }
 
 .ring-container {
@@ -108,7 +112,8 @@ button {
 }
 
 h2 {
-    font-size: 24px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
+    font-size: 20px;
     margin-bottom: 20px;
 }
 
@@ -212,21 +217,21 @@ button {
     }
 }
 
-/* Platzhalter für eigenes Login */
 .placeholder-left {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+    position: absolute; /* Hinzugefügt */
+    top: 40px; /* Positionierung anpassen */
+    left: 5px; /* Positionierung anpassen */
     color: #837C69;
     font-weight: bold;
     font-size: 16px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
 }
 
 /* Log-Out Button */
 .logout-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    position: absolute; /* Hinzugefügt */
+    top: 40px; /* Positionierung anpassen */
+    right: 5px; /* Positionierung anpassen */
     background-color: #837C69;
     color: #fff;
     border: none;
@@ -236,4 +241,5 @@ button {
     font-weight: bold;
     font-size: 16px;
     text-decoration: none;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
 }
