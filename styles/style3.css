@@ -160,7 +160,9 @@ button {
     margin-bottom: 20px;
     position: relative;
     color: #837C69;
+
 }
+
 
 .ring-svg {
     width: 100%;
@@ -169,16 +171,6 @@ button {
     color: #837C69;
 }
 
-.emoji-icon {
-    width: 40px;
-    height: 40px;
-    fill: #FDDF74;
-    transition: transform 1s linear, transform 0.5s ease-in-out, scale 0.5s ease-in-out;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform-origin: center bottom;
-}
 
 .congratulation {
     font-size: 18px;

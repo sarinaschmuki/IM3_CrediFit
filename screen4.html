@@ -1,42 +1,38 @@
+<!-- Screen4: Liste der Sporteinträge -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bei CrediFit einloggen</title>
+    <title>Übersicht deiner Sportaktivitäten</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/style4.css">
-    
+    <link rel="stylesheet" href="styles/style4.css"> <!-- Füge ggf. deine Styles hinzu -->
 </head>
-
 <body>
     <div class="container">
-        <!-- Logo Container in anderen Container einbinden -->
         <div class="logo-container">
+            <span class="placeholder-left" id="username"></span>
+            <a class="logout-button" href="screen1.html">Log Out</a>
             <img class="logo" src="Bilder/CrediFit Logo.png" alt="Credifit Logo">
         </div>
-        <h2>Deine Sportaktivitäten</h2>
         
-        <div class="center-container">
-            <div class="white-container">
-                <div class="sport-activity">Sport 1</div>
-                <div class="sport-activity">Sport 2</div>
-                <div class="sport-activity">Sport 3</div>
-                <div class="sport-activity">Sport 4</div>
-                <div class="sport-activity">Sport 5</div>
-                <div class="sport-activity">Sport 6</div>
-                <div class="sport-activity">Sport 7</div>
-                <div class="sport-activity">Sport 8</div>
-                <div class="sport-activity">Sport 9</div>
-                <div class="sport-activity">Sport 10</div>
-            </div>
-            
-            <button class="add-activity-button"> <a href="screen3.html">Sportaktivität hinzufügen</a></p> </button> 
-        </div>
+        <h2>Übersicht deiner Sportaktivitäten</h2>
+        
+        <ul id="sportEntries" class="sport-entries">
+            <!-- Hier werden die Sporteinträge dynamisch eingefügt -->
+        </ul>
     </div>
 
+    <script type="module" src="script/script4.js"></script> 
+    <script>
+        // Hier kann der JavaScript-Code für die Anzeige des aktuellen Benutzers hinzugefügt werden
+        // Dieser Code sollte den aktuell angemeldeten Benutzer anzeigen
+
+        // Beispiel:
+        const user = JSON.parse(localStorage.getItem('loggedInUser'));
+        document.getElementById('username').textContent = user.name; // Annahme, dass der Benutzername im localStorage gespeichert ist
+    </script>
 </body>
-    
-
-
 </html>

@@ -21,7 +21,7 @@
         </div>
         <h2>Füge deine sportliche Aktivität hinzu und gewinne ECTS Punkte für das Semester. 60h Sport geben 2 ECTS.</h2>
         
-        <div class="ring-container">
+        <div class="ring-container" id="progressCircle"> 
             <svg class="ring-svg" viewBox="0 0 150 150">
                 <circle cx="75" cy="75" r="60" fill="none" stroke="#ccc" stroke-width="20"></circle>
                 <circle id="ring-fill" cx="75" cy="75" r="60" fill="none" stroke="#837C69" stroke-width="20" stroke-dasharray="0 377" ></circle>
@@ -69,6 +69,32 @@
     </div>
     <script type="module" src="script/script3.js"></script> 
     <script>
+    let totalMinutes = 0;
+        let congratsShown = false;
+        let emojiRotation = 0;
+        function Hinzufügen() {
+            const select = document.getElementById('hours-select');
+            const selectedValue = parseInt(select.options[select.selectedIndex].value);
+            totalMinutes += selectedValue;
+            if (totalMinutes >= 1800) { // 30 Stunden entsprechen 1800 Minuten
+                totalMinutes = 1800;
+                if (!congratsShown) {
+                    showCongratulations();
+                    createConfetti();
+                }
+            }
+            const ringFill = document.getElementById('ring-fill');
+            const fillPercentage = (totalMinutes / 1800) * 100;
+            const dashLength = (fillPercentage / 100) * 377;
+            ringFill.style.strokeDasharray = `${dashLength} 377`;
+            updateStunden(totalMinutes);
+            updateSportIcon();
+            animateEmoji();
+        }
+    
+
+
+
         function showCongratulations() {
             const congrats = document.querySelector(".congratulation");
             congrats.style.display = "block";

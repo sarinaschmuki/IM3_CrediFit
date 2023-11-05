@@ -1,32 +1,40 @@
-import { supa } from "../config/config.js"; 
+import { supa } from "../config/config.js";
 
-//Liste von geleisteten Sportarten und Stunden anzeigen 
+ // Holen der Daten des angemeldeten Benutzers
+ const userData = JSON.parse(localStorage.getItem('loggedInUser'));
+ const userID = userData.id;
+ const dataUser = await supa.from("User").select().eq("user_id", userID);
+ const currentUserID = dataUser.data[0].primary_id;
 
-// Funktion zum Abrufen und Anzeigen der gespeicherten Sportaktivitäten
-async function fetchAndDisplaySportActivities() {
+ 
+document.addEventListener('DOMContentLoaded', async function () {
     try {
-        const { data, error } = await supa.from("Sport").select("*").order("datum", { ascending: false });
+        const sportEntries = document.getElementById('sportEntries');
+        sportEntries.innerHTML = '';
 
-        if (error) {
-            console.error("Fehler beim Abrufen der Sportaktivitäten:", error);
-            return;
+        if (localStorage.getItem('loggedInUser')) {
+            const userData = JSON.parse(localStorage.getItem('loggedInUser'));
+            const userID = userData.id;
+
+            const { data: sportData, error: sportError } = await supa
+                .from("Sport")
+                .select()
+                .eq("primary_id", currentUserID);
+
+            if (sportError) {
+                console.error("Fehler beim Abrufen der Sportdaten:", sportError);
+                return;
+            }
+
+            sportData.forEach(entry => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `Datum: ${entry.date}, Zeit: ${entry.time} Minuten`;
+                sportEntries.appendChild(listItem);
+            });
+        } else {
+            console.error("Benutzer nicht angemeldet oder Benutzerdaten nicht gefunden.");
         }
-
-        const sportActivitiesContainer = document.querySelector(".center-container");
-        sportActivitiesContainer.innerHTML = ""; // Leert die vorherige Anzeige
-
-        // Anzeige der abgerufenen Sportaktivitäten
-        data.forEach((activity) => {
-            const activityDiv = document.createElement("div");
-            activityDiv.classList.add("sport-activity");
-            activityDiv.textContent = `${activity.datum} - Sportart: ${activity.sportart}, Zeit: ${activity.zeit}`;
-
-            sportActivitiesContainer.appendChild(activityDiv);
-        });
     } catch (error) {
-        console.error("Fehler beim Abrufen und Anzeigen der Sportaktivitäten:", error);
+        console.error("Fehler beim Laden der Sportaktivitäten:", error);
     }
-}
-
-// Rufe die Funktion auf, um die Sportaktivitäten anzuzeigen, wenn die Seite geladen wird
-document.addEventListener("DOMContentLoaded", fetchAndDisplaySportActivities);
+});

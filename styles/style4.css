@@ -8,6 +8,8 @@
     display: block; /* Macht das Logo zu einem Blockelement */
     margin: 0 auto 20px; /* Zentriert das Logo horizontal im Container */
 }
+
+
 /* CSS-Stil für den Container */
 .container {
     max-width: 80%; /* Ändert die maximale Breite auf 80% des Bildschirms */
@@ -31,18 +33,6 @@ body {
     margin: 0;
 }
 
-.button {
-    width: 100px;
-    padding: 10px;
-    background-color: #FDDF74;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-top: 20px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
-    text-align: center;
-}
 
 .white-container {
             /* Füge hier weitere CSS-Stile für die Container hinzu, falls gewünscht */
@@ -51,27 +41,29 @@ body {
             margin: 10px 0;
             text-align: center;
         }
+.placeholder-left {
+            position: absolute; /* Hinzugefügt */
+            top: 40px; /* Positionierung anpassen */
+            left: 5px; /* Positionierung anpassen */
+            color: #837C69;
+            font-weight: bold;
+            font-size: 16px;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
+        }
         
-.sport-activity {
-            width: 100px;
-            height: 100px;
-            background-color: white; /* Weiß einfärben */
-            border: 1px solid #ccc; /* Rand hinzufügen */
-            text-align: center;
-            line-height: 100px;
-            font-size: 18px;
-            margin: 10px;
-            float: left;
-            box-sizing: border-box; /* Rand und Padding berücksichtigen */
-            border-radius: 10px; /* Ecken abrunden */
-            overflow: hidden; /* Überlauf verstecken */
-        }
-
-.sport-activity:nth-child(odd) {
-            clear: left; /* Nach jedem ungeraden Element den Zeilenumbruch erzwingen */
-        }
-
-.center-container {
-            margin: 0 auto; /* Zentrieren */
-            width: fit-content; /* Containergröße an den Inhalt anpassen */
+        /* Log-Out Button */
+        .logout-button {
+            position: absolute; /* Hinzugefügt */
+            top: 40px; /* Positionierung anpassen */
+            right: 5px; /* Positionierung anpassen */
+            background-color: #837C69;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            text-decoration: none;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
         }

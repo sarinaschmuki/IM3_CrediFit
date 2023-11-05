@@ -1,7 +1,48 @@
 import { supa } from "../config/config.js"; 
 
 // Startbildschirm - Sportart bei seinem User hinzufügen 
+// Funktion, um den aktuellen Stand der Sportstunden beim Laden der Seite anzuugen
+async function updateSportStunden() {
+  try {
+    // Holen der Daten des angemeldeten Benutzers
+    const userData = JSON.parse(localStorage.getItem('loggedInUser'));
+    const userID = userData.id;
+    const dataUser = await supa.from("User").select().eq("user_id", userID);
+    const currentUserID = dataUser.data[0].primary_id;
 
+    // Abrufen aller Einträge des aktuellen Benutzers aus der "Sport" Tabelle
+    const { data: sportData, error: sportError } = await supa
+      .from("Sport")
+      .select("time")
+      .eq("primary_id", currentUserID);
+
+    if (sportError) {
+      console.error("Fehler beim Abrufen der Sportdaten:", sportError);
+      return;
+    }
+
+    // Berechnen der gesamten Zeit der geleisteten Sportarten in Minuten
+    const totalMinutes = sportData.reduce((acc, entry) => acc + parseInt(entry.time), 0);
+
+    // Aktualisieren des Kreises entsprechend dem Fortschritt
+    updateStunden(totalMinutes);
+  } catch (error) {
+    console.error("Fehler beim Aktualisieren der Sportstunden:", error);
+  }
+}
+
+// Rufe die Funktion auf, um den aktuellen Stand der Stunden beim Laden der Seite anzuzeigen
+document.addEventListener('DOMContentLoaded', async function () {
+  try {
+    // Lade die Sportarten
+    await fetchSportarten();
+    
+    // Aktualisiere die Sportstunden
+    await updateSportStunden();
+  } catch (error) {
+    console.error("Fehler beim Laden der Seite:", error);
+  }
+});
 
 // Namen des User oben Links anzeigen 
 document.addEventListener('DOMContentLoaded', function() {
@@ -11,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
       getUser(userData.id);
   }
 });
+
 //Funktion zum alle Daten vom User holen
 async function getUser(userID){
   try {
@@ -36,6 +78,7 @@ async function fetchSportarten() {
         console.error("Fehler beim Abrufen der Sportarten:", error);
         return;
       }
+
   
 //Dropdown Menü für Sportarten
 const sportartDropdown = document.getElementById("sportart");
@@ -65,7 +108,7 @@ async function saveSportSelection() {
     const  userID = userData.id;
     const dataUser = await supa.from("User").select().eq("user_id",userID);
   currentUserID = dataUser.data[0].primary_id;
-console.log(currentUserID); 
+  console.log(currentUserID); 
 }
 
   try {
@@ -82,28 +125,46 @@ console.log(currentUserID);
 
 // Speichern der Auswahl in der "Sport" Tabelle der Supabase
 const { data, error } = await supa.from("Sport").insert([
-          {
-              primary_id: currentUserID,
-              sportart_id: selectedSportId,
-              date: selectedDate,
-              time: selectedTimeValue
-          }
-      ]); 
+  {
+    primary_id: currentUserID,
+    sportart_id: selectedSportId,
+    date: selectedDate,
+    time: selectedTimeValue
+  }
+]); 
 
-      if (error) {
-          console.error("Fehler beim Speichern der Sportauswahl:", error);
-          return;
-      }
-
-      console.log("Sportauswahl erfolgreich gespeichert:", data);
-   
-  } catch (error) {
-      console.error("Fehler beim Speichern der Sportauswahl:", error);
-  } 
-  
+if (error) {
+  console.error("Fehler beim Speichern der Sportauswahl:", error);
+  return;
 }
 
+console.log("Sportauswahl erfolgreich gespeichert:", data);
 
+// Nachdem die Auswahl gespeichert wurde, die gesamte Zeit aktualisieren
+// Hole alle Einträge für den aktuellen Benutzer aus der "Sport" Tabelle
+const { data: sportData, error: sportError } = await supa
+  .from("Sport")
+  .select("time")
+  .eq("primary_id", currentUserID);
+
+if (sportError) {
+  console.error("Fehler beim Abrufen der Sportdaten:", sportError);
+  return;
+}
+//Funktion um aktuelle Stand der Stunden in Blau anzuzeigen 
+
+
+
+// Berechne die gesamte Zeit der geleisteten Sportarten in Minuten
+const totalMinutes = sportData.reduce((acc, entry) => acc + entry.time, 0);
+
+// Aktualisiere den Kreis entsprechend dem Fortschritt
+updateStunden(totalMinutes);
+
+} catch (error) {
+console.error("Fehler beim Speichern der Sportauswahl:", error);
+}
+}
 
 // Rufe die Funktion auf, um Sportarten zu laden
 fetchSportarten();
