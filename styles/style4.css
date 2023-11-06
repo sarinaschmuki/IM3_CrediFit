@@ -32,15 +32,22 @@ body {
     height: 100vh;
     margin: 0;
 }
+.sport-entries {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sport-entries li {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
 
 
-.white-container {
-            /* Füge hier weitere CSS-Stile für die Container hinzu, falls gewünscht */
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            text-align: center;
-        }
+       
 .placeholder-left {
             position: absolute; /* Hinzugefügt */
             top: 40px; /* Positionierung anpassen */

@@ -19,7 +19,10 @@
         </div>
         
         <h2>Übersicht deiner Sportaktivitäten</h2>
+        <div class="sport-entries-header">
         
+        </div>
+
         <ul id="sportEntries" class="sport-entries">
             <!-- Hier werden die Sporteinträge dynamisch eingefügt -->
         </ul>
@@ -27,10 +30,7 @@
 
     <script type="module" src="script/script4.js"></script> 
     <script>
-        // Hier kann der JavaScript-Code für die Anzeige des aktuellen Benutzers hinzugefügt werden
-        // Dieser Code sollte den aktuell angemeldeten Benutzer anzeigen
-
-        // Beispiel:
+        
         const user = JSON.parse(localStorage.getItem('loggedInUser'));
         document.getElementById('username').textContent = user.name; // Annahme, dass der Benutzername im localStorage gespeichert ist
     </script>

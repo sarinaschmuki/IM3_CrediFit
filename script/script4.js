@@ -1,20 +1,50 @@
 import { supa } from "../config/config.js";
 
- // Holen der Daten des angemeldeten Benutzers
- const userData = JSON.parse(localStorage.getItem('loggedInUser'));
- const userID = userData.id;
- const dataUser = await supa.from("User").select().eq("user_id", userID);
- const currentUserID = dataUser.data[0].primary_id;
-
- 
 document.addEventListener('DOMContentLoaded', async function () {
+    console.log("DOM wurde vollständig geladen");
+    try {
+        if (localStorage.getItem('loggedInUser')) {
+            const user = JSON.parse(localStorage.getItem('loggedInUser'));
+            const userID = user.id;
+
+            const { data: userData, error: userError } = await supa
+                .from("User")
+                .select()
+                .eq("user_id", userID);
+
+            if (userError) {
+                console.error("Fehler beim Abrufen der Benutzerdaten:", userError);
+                return;
+            }
+
+            if (userData && userData[0]) {
+                const currentUserID = userData[0].primary_id;
+
+                // Rufen Sie die Funktion updateSportEntries mit dem aktuellen Benutzer-ID auf
+                await updateSportEntries(currentUserID);
+
+                // Setzen Sie den Benutzernamen im Header
+                const usernameElement = document.getElementById('username');
+                if (usernameElement) {
+                    usernameElement.textContent = userData[0].name;
+                }
+            } else {
+                console.error("Benutzerdaten nicht gefunden.");
+            }
+        } else {
+            console.error("Benutzer nicht angemeldet.");
+        }
+    } catch (error) {
+        console.error("Fehler beim Laden der Sportaktivitäten:", error);
+    }
+});
+
+async function updateSportEntries(currentUserID) {
     try {
         const sportEntries = document.getElementById('sportEntries');
-        sportEntries.innerHTML = '';
 
-        if (localStorage.getItem('loggedInUser')) {
-            const userData = JSON.parse(localStorage.getItem('loggedInUser'));
-            const userID = userData.id;
+        if (sportEntries) {
+            sportEntries.innerHTML = '';
 
             const { data: sportData, error: sportError } = await supa
                 .from("Sport")
@@ -28,13 +58,16 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             sportData.forEach(entry => {
                 const listItem = document.createElement('li');
-                listItem.textContent = `Datum: ${entry.date}, Zeit: ${entry.time} Minuten`;
+                listItem.innerHTML = `
+                    <span>${entry.sportart_id}</span>
+                    <span>${entry.date}</span>
+                    <span>${entry.time} Minuten</span>
+                `;
                 sportEntries.appendChild(listItem);
             });
-        } else {
-            console.error("Benutzer nicht angemeldet oder Benutzerdaten nicht gefunden.");
+            console.log("updateSportEntries wurde aufgerufen");
         }
     } catch (error) {
         console.error("Fehler beim Laden der Sportaktivitäten:", error);
     }
-});
+}
