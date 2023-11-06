@@ -166,5 +166,28 @@ console.error("Fehler beim Speichern der Sportauswahl:", error);
 }
 }
 
+//Ring
+const hoursProgress = 30; // Beispielwert, bitte durch den tatsächlichen Fortschritt ersetzen
+const MAX_HOURS = 60; // Beispielwert für maximale Stunden, bitte anpassen
+
+const svg = document.querySelector('.ring-svg');
+const ringFill = document.getElementById('ring-fill');
+const textHours = document.getElementById('stunden');
+
+const progress = (hoursProgress / MAX_HOURS) * 377;
+
+ringFill.style.strokeDasharray = `${progress} 377`;
+textHours.textContent = `${hoursProgress}h`;
+
+if (hoursProgress < 50) {
+  ringFill.style.stroke = '#837C69';
+} else if (hoursProgress < 80) {
+  ringFill.style.stroke = 'yellow';
+} else {
+  ringFill.style.stroke = 'green';
+}
+
+
+
 // Rufe die Funktion auf, um Sportarten zu laden
 fetchSportarten();

@@ -27,10 +27,12 @@
         <ul id="sportEntries" class="sport-entries">
             <!-- Hier werden die Sporteinträge dynamisch eingefügt -->
         </ul>
-    </div>
+        <button> Zurück zum Sport einfügen</button>
+</div>
 
     <script type="module" src="script/script4.js"></script> 
     <script>
+        
         
         const user = JSON.parse(localStorage.getItem('loggedInUser'));
         document.getElementById('username').textContent = user.name; // Annahme, dass der Benutzername im localStorage gespeichert ist
