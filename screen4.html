@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="styles/style4.css"> <!-- Füge ggf. deine Styles hinzu -->
 </head>
 <body>
+    <div class="wrapper">
     <div class="container">
         <div class="logo-container">
             <span class="placeholder-left" id="username"></span>
@@ -34,5 +35,6 @@
         const user = JSON.parse(localStorage.getItem('loggedInUser'));
         document.getElementById('username').textContent = user.name; // Annahme, dass der Benutzername im localStorage gespeichert ist
     </script>
+    </div>
 </body>
 </html>
