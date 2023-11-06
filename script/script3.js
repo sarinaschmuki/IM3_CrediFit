@@ -1,5 +1,22 @@
 import { supa } from "../config/config.js"; 
 
+// Rufe die Funktion auf, um den aktuellen Stand der Stunden beim Laden der Seite anzuzeigen
+document.addEventListener('DOMContentLoaded', async function () {
+  try {
+    // Lade die Sportarten
+    await fetchSportarten();
+    
+    // Aktualisiere die Sportstunden
+    const currentUserHours = await updateSportStunden();
+    
+    // Aktualisiere den Ring mit dem aktuellen Stand vom Benutzer
+    updateRing(currentUserHours);
+  } catch (error) {
+    console.error("Fehler beim Laden der Seite:", error);
+  }
+});
+
+
 // Startbildschirm - Sportart bei seinem User hinzufügen 
 // Funktion, um den aktuellen Stand der Sportstunden beim Laden der Seite anzuugen
 async function updateSportStunden() {
@@ -166,28 +183,25 @@ console.error("Fehler beim Speichern der Sportauswahl:", error);
 }
 }
 
-//Ring
-
-const svg = document.querySelector('.ring-svg');
-const ringFill = document.getElementById('ring-fill');
-const textHours = document.getElementById('stunden');
-function updateStunden(hoursProgress) {
-  const MAX_HOURS = 100;
-
-
-
-const progress = (hoursProgress / MAX_HOURS) * 377;
-
-ringFill.style.strokeDasharray = `${progress} 377`;
-textHours.textContent = `${hoursProgress}h`;
-
-if (hoursProgress < 50) {
-  ringFill.style.stroke = '#837C69';
-} else if (hoursProgress < 80) {
-  ringFill.style.stroke = 'yellow';
-} else {
-  ringFill.style.stroke = 'green';
-}
+//Fortschritt im Ring anzeigen 
+function updateRing(currentUserHours) {
+  const MAX_HOURS = 60; // Beispielwert für maximale Stunden, bitte anpassen
+  const svg = document.querySelector('.ring-svg');
+  const ringFill = document.getElementById('ring-fill');
+  const textHours = document.getElementById('stunden');
+  
+  const progress = (currentUserHours / MAX_HOURS) * 377;
+  
+  ringFill.style.strokeDasharray = `${progress} 377`;
+  textHours.textContent = `${currentUserHours}h`;
+  
+  if (currentUserHours < 50) {
+    ringFill.style.stroke = 'blue';
+  } else if (currentUserHours < 80) {
+    ringFill.style.stroke = 'yellow';
+  } else {
+    ringFill.style.stroke = 'green';
+  }
 }
 
 
