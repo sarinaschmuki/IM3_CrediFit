@@ -17,18 +17,7 @@
     margin: 10px 0;
     top: 0;
 }
-/* CSS-Stil für den Container */
-.container {
-    max-width: 80%; /* Ändert die maximale Breite auf 80% des Bildschirms */
-    width: 400px;
-    margin: 0 auto;
-    padding: 0; /* Fügt oben und unten Abstand hinzu */
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
-    border-radius: 20px;
-    text-align: center; /* Zentriert den Inhalt horizontal */
-    background-color: #FCDE73;
-    top: 0;
-}
+
 
 /* CSS-Stil für das Log In darunter */
 body {
