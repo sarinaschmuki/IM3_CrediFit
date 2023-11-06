@@ -56,15 +56,28 @@ async function updateSportEntries(currentUserID) {
                 return;
             }
 
-            sportData.forEach(entry => {
+            for (const entry of sportData) {
+                // Hier rufst du die Sportart basierend auf entry.sportart_id ab
+                const { data: sportartData, error: sportartError } = await supa
+                    .from("Sportarten") 
+                    .select()
+                    .eq("sportart_id", entry.sportart_id);
+
+                if (sportartError) {
+                    console.error("Fehler beim Abrufen der Sportart:", sportartError);
+                    continue; // Setze die Schleife fort, wenn ein Fehler auftritt
+                }
+
+                const sportartName = sportartData && sportartData[0] ? sportartData[0].sportart : "Unbekannte Sportart";
+
                 const listItem = document.createElement('li');
                 listItem.innerHTML = `
-                    <span>${entry.sportart_id}</span>
+                    <span>${sportartName}</span>
                     <span>${entry.date}</span>
                     <span>${entry.time} Minuten</span>
                 `;
                 sportEntries.appendChild(listItem);
-            });
+            }
             console.log("updateSportEntries wurde aufgerufen");
         }
     } catch (error) {

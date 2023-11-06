@@ -7,8 +7,8 @@
     <title>Sport hinzufügen</title>
     <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/style3.css">
+    <link rel="stylesheet" href="styles/style.css">
+    
     
 </head>
 <body>
@@ -18,14 +18,16 @@
         <div class="logo-container">
             <span class="placeholder-left">Max Mustermann</span>
             <a class="logout-button" href="screen1.html">Log Out</a>
-            <img class="logo" src="Bilder/CrediFit Logo.png" alt="Credifit Logo">
+            <img class="logo" src="Bilder/CreditFit_neu.png" alt="Credifit Logo">
         </div>
-        <h2>Füge deine sportliche Aktivität hinzu und gewinne ECTS Punkte für das Semester. 60h Sport geben 2 ECTS.</h2>
-        
-        <div class="ring-container" id="progressCircle" data-pc="100"> 
-            <svg id= svg class="ring-svg" viewBox="0 0 150 150">
-                <circle cx="75" cy="75" r="60" fill="transparent" stroke="#ccc" stroke-width="20"></circle>
-                <circle id="ring-fill" cx="75" cy="75" r="60" fill="transparent" stroke="#837C69" stroke-width="20" stroke-dasharray="0 377" ></circle>
+        <h2>Füge Sportaktivitäten hinzu 
+            <br>und sammle ECTS-Punkte.
+            <br> 60 Stunden = 2 ECTS </h2>
+         
+        <div class="ring-container" id="progressCircle"> 
+            <svg class="ring-svg" viewBox="0 0 150 150">
+                <circle cx="75" cy="75" r="60" fill="none" stroke="#ccc" stroke-width="20"></circle>
+                <circle id="ring-fill" cx="75" cy="75" r="60" fill="none" stroke="#837C69" stroke-width="20" stroke-dasharray="0 377" ></circle>
                 <g id="icon-group">
                     <circle cx="75" cy="75" r="55" fill="transparent"></circle>
                     <text id="stunden" x="75" y="85" font-size="20" fill="#837C69" text-anchor="middle" alignment-baseline="middle" transform="rotate(90 75 75)"></text>
@@ -55,91 +57,21 @@
             <select id="sportart" required> class="text-input">
                 <option value="" disabled selected>Sportart</option>
             </select>
+            <div id="errorMessage" style="color: red;"></div>
         </div>
-
-        <button id="saveSportSelection" onclick="Hinzufügen()">Hinzufügen</button>
+        <button id="saveSportSelection">Hinzufügen</button>
         <button class="overview-button" onclick="showOverview()">Übersicht deiner Sportaktivitäten</button></p>
-
-
-        <div class="congratulation">
+        <div id="congratulation">
             Gratulation, du hast 2 ECTS erreicht!
         </div>
     </div>
-
-    <div class="confetti-container">
-        <!-- Konfettibomben-Emojis (🎉) hier einfügen -->
-    </div>
     <script type="module" src="script/script3.js"></script> 
     <script>
-    function showOverview() {
-      // Weiterleitung zur screen4.html
-      window.location.href = 'screen4.html';
-    }
-
-    let totalMinutes = 0;
-        let congratsShown = false;
-        let emojiRotation = 0;
-        function Hinzufügen() {
-            const select = document.getElementById('hours-select');
-            const selectedValue = parseInt(select.options[select.selectedIndex].value);
-            totalMinutes += selectedValue;
-            if (totalMinutes >= 1800) { // 30 Stunden entsprechen 1800 Minuten
-                totalMinutes = 1800;
-                if (!congratsShown) {
-                    showCongratulations();
-                    createConfetti();
-                }
-            }
-            const ringFill = document.getElementById('ring-fill');
-            const fillPercentage = (totalMinutes / 1800) * 100;
-            const dashLength = (fillPercentage / 100) * 377;
-            ringFill.style.strokeDasharray = `${dashLength} 377`;
-            updateStunden(totalMinutes);
-            updateSportIcon();
-            animateEmoji();
-        }
-    
-
-
-
-        function showCongratulations() {
-            const congrats = document.querySelector(".congratulation");
-            congrats.style.display = "block";
-            congratsShown = true;
-        }
-
-        function hideCongratulations() {
-            const congrats = document.querySelector(".congratulation");
-            congrats.style.display = "none";
-        }
-        function createConfetti() {
-            const confettiContainer = document.querySelector(".confetti-container");
-            const confettiCount = 50; // Anzahl der Konfettibomben
-
-            for (let i = 0; i < confettiCount; i++) {
-                const confetti = document.createElement("div");
-                confetti.classList.add("confetti");
-                const randomX = Math.random() * window.innerWidth;
-                const randomDelay = Math.random() * 5; //  Verzögerung für den Regen-Effekt
-                const randomDuration = (Math.random() * 3) + 5; //  Dauer für den Regen-Effekt
-                confetti.style.left = `${randomX}px`;
-                confetti.style.animationDelay = `${randomDelay}s`;
-                confetti.style.animationDuration = `${randomDuration}s`;
-                confettiContainer.appendChild(confetti);
-            }
-        }
-
-        function removeConfetti() {
-            const confettiContainer = document.querySelector(".confetti-container");
-            confettiContainer.innerHTML = ''; // Entfernt alle Konfettibomben
-        }
-
-        function updateStunden(minutes) {
-            const stundenText = document.getElementById('stunden');
-            const stundenValue = minutes / 60; // Umrechnung von Minuten in Stunden
-            stundenText.textContent = `${stundenValue.toFixed(2)}/60`; // Anzeige der Stunden im Verhältnis zu 60
+        function showOverview() {
+        // Weiterleitung zur screen4.html
+        window.location.href = 'screen4.html';
         }
     </script>
-     </div>
+    </div>
 </body>
 </html>
