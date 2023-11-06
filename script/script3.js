@@ -167,12 +167,14 @@ console.error("Fehler beim Speichern der Sportauswahl:", error);
 }
 
 //Ring
-const hoursProgress = 30; // Beispielwert, bitte durch den tatsächlichen Fortschritt ersetzen
-const MAX_HOURS = 60; // Beispielwert für maximale Stunden, bitte anpassen
 
 const svg = document.querySelector('.ring-svg');
 const ringFill = document.getElementById('ring-fill');
 const textHours = document.getElementById('stunden');
+function updateStunden(hoursProgress) {
+  const MAX_HOURS = 100;
+
+
 
 const progress = (hoursProgress / MAX_HOURS) * 377;
 
@@ -186,7 +188,7 @@ if (hoursProgress < 50) {
 } else {
   ringFill.style.stroke = 'green';
 }
-
+}
 
 
 // Rufe die Funktion auf, um Sportarten zu laden
