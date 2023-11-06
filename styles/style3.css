@@ -210,8 +210,8 @@ button {
 
 .placeholder-left {
     position: absolute; /* Hinzugefügt */
-    top: 40px; /* Positionierung anpassen */
-    left: 5px; /* Positionierung anpassen */
+    top: 15px; /* Positionierung anpassen */
+    left: 2.5px; /* Positionierung anpassen */
     color: #837C69;
     font-weight: bold;
     font-size: 16px;
@@ -221,8 +221,8 @@ button {
 /* Log-Out Button */
 .logout-button {
     position: absolute; /* Hinzugefügt */
-    top: 40px; /* Positionierung anpassen */
-    right: 5px; /* Positionierung anpassen */
+    top: 15px; /* Positionierung anpassen */
+    right: 2.5px; /* Positionierung anpassen */
     background-color: #837C69;
     color: #fff;
     border: none;

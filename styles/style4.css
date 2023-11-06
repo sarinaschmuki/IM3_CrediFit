@@ -1,6 +1,7 @@
 .logo-container {
     text-align: center; /* Zentriert den Inhalt horizontal */
     padding-top: 20px; /* Fügt oben Abstand hinzu */
+    position: relative; /* Hinzugefügt */
 }
 
 .logo {
@@ -19,6 +20,7 @@
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
     border-radius: 20px;
     text-align: center; /* Zentriert den Inhalt horizontal */
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
     background-color: #FCDE73;
 }
 body {
@@ -47,30 +49,30 @@ body {
 }
 
 
-       
 .placeholder-left {
-            position: absolute; /* Hinzugefügt */
-            top: 40px; /* Positionierung anpassen */
-            left: 5px; /* Positionierung anpassen */
-            color: #837C69;
-            font-weight: bold;
-            font-size: 16px;
-            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
-        }
-        
-        /* Log-Out Button */
-        .logout-button {
-            position: absolute; /* Hinzugefügt */
-            top: 40px; /* Positionierung anpassen */
-            right: 5px; /* Positionierung anpassen */
-            background-color: #837C69;
-            color: #fff;
-            border: none;
-            border-radius: 3px;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 16px;
-            text-decoration: none;
-            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
-        }
+    position: absolute; /* Hinzugefügt */
+    top: 15px; /* Positionierung anpassen */
+    left: 2.5px; /* Positionierung anpassen */
+    color: #837C69;
+    font-weight: bold;
+    font-size: 16px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
+}
+      
+/* Log-Out Button */
+.logout-button {
+    position: absolute; /* Hinzugefügt */
+    top: 15px; /* Positionierung anpassen */
+    right: 2.5px; /* Positionierung anpassen */
+    background-color: #837C69;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
+}
+
