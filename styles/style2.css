@@ -28,6 +28,12 @@
     background-color: #FCDE73;
 }
 
+.login-link {
+    color: #C9BF99; /* Ändern Sie die Farbe des Links auf Weiß */
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
+    font-weight: bold; /* Fett gedruckte Schrift, falls gewünscht */
+}
+
 /* CSS-Stil für das Sign Up darunter */
 body {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
@@ -58,3 +64,4 @@ button {
     cursor: pointer;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
 }
+
