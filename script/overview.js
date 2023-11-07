@@ -71,10 +71,11 @@ async function updateSportEntries(currentUserID) {
                 const sportartName = sportartData && sportartData[0] ? sportartData[0].sportart : "Unbekannte Sportart";
 
                 const listItem = document.createElement('li');
+                listItem.classList.add('sport-entry'); // Neue Klasse hinzufügen
                 listItem.innerHTML = `
-                    <span>${sportartName}</span>
-                    <span>${entry.date}</span>
-                    <span>${entry.time} Minuten</span>
+                    <span class="sport">${sportartName}</span>
+                    <span class="date">${entry.date}</span>
+                    <span class="duration">${entry.time} Minuten</span>
                 `;
                 sportEntries.appendChild(listItem);
             }
