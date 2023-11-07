@@ -230,3 +230,9 @@ a {
   color: white;
   text-decoration: none; 
 }
+
+@media only screen and (max-width: 600px) {
+  .logo {
+    margin-bottom: 50px; /* Ändern Sie den Abstand nach unten nach Ihren Bedürfnissen */
+  }
+}
