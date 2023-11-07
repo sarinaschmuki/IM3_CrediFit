@@ -7,7 +7,7 @@ body {
   background-color: #ffffff;
   margin: 0;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 * {
@@ -52,10 +52,9 @@ body {
   background-color: #FCDE73;
 }
 
-
 h2 {
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 400;
   margin-bottom: 20px;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
 }
