@@ -232,7 +232,7 @@ a {
 }
 
 @media only screen and (max-width: 600px) {
-  .logo {
-    margin-bottom: 50px; /* Ändern Sie den Abstand nach unten nach Ihren Bedürfnissen */
+  .container {
+    margin-top: 50px; /* Ändern Sie den Abstand nach unten nach Ihren Bedürfnissen */
   }
 }
