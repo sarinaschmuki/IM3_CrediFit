@@ -55,6 +55,7 @@ body {
 
 h2 {
   font-size: 24px;
+  font-weight: 500;
   margin-bottom: 20px;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
 }
@@ -103,6 +104,20 @@ button {
   font-weight: bold;
 }
 
+/* ---- index ---- */
+.index-button {
+  display: inline-block;
+  padding: 12px 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #000000;
+  border: none;
+  margin: 1px;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 
 /* ---- Entry & Overview ---- */

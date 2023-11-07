@@ -1,22 +1,51 @@
+<!-- Startbildschrim bei Credifit -->
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IM3_CrediFit</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <title>Bei CrediFit einloggen</title>
     <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
-
+    <link rel="stylesheet" href="styles/style.css">
 </head>
-
 <body>
+    <div class="wrapper">
+    <div class="container">
+        <!-- Logo Container in anderen Container einbinden -->
+        <div class="logo-container">
+            <img class="logo" src="Bilder/CreditFit_neu.png" alt="Credifit Logo">
+        </div>
+    <h2>Willkommen bei CrediFit! 
+        <br> Verdiene ECTS-Punkte durch Sport. 
+        <br> Steigere Fitness, werde belohnt.
+        <br> Los geht's!</h2>
+        <br>
     
-    <script type="module" src="config/config.js"></script>
-    <script type="module" src="script/script.js"></script> 
+    <body>
 
+        <p>Schon aktiver Sportler? </p>
+        <p><a href="screen1.html" class="index-button">Jetzt anmelden</a></p>
+        <p>Neu bei CrediFit?</p>
+        <p><a href="screen2.html" class="index-button">Jetzt registrieren</a></p>
+        </div>
+    </body>
+</div>
+<script type="module" src="script/script1.js"></script> 
+</div>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        alert(`Welcome, ${name}! You have successfully signed up with email: ${email}`);
+    });
+</script>
 </body>
+
+
+
+
+
 
 </html>
