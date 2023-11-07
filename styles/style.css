@@ -215,7 +215,7 @@ button {
 
 .sport-entries li span {
   flex: 1;
-  margin-right: 35px; /* Reduziert den Abstand zwischen den Spans */
+  margin-right: 30px; /* Reduziert den Abstand zwischen den Spans */
 }
 
 .sport-entries li .duration {
