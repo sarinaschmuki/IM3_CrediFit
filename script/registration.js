@@ -62,7 +62,7 @@ if (insertError) {
 localStorage.setItem('loggedInUser', JSON.stringify(user));
 
     // Weiterleitung auf Screen3
-    window.location.href = "screen3.html";
+    window.location.href = "home.html";
 });
 // Rufe die Funktion auf, um Studiengänge zu laden
 fetchStudiengänge();

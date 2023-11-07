@@ -26,6 +26,6 @@ loginForm.addEventListener("submit", async (e) => {
    
        
         // Anmeldung erfolgreich, weiterleiten auf Screen3
-        window.location.href = "screen3.html";
+        window.location.href = "home.html";
 }
 });
