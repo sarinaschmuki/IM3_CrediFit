@@ -65,6 +65,7 @@ h2 {
   max-width: 200px; /* Maximale Breite des Logos */
   display: block; /* Macht das Logo zu einem Blockelement */
   margin: 0 auto 20px; /* Zentriert das Logo horizontal im Container */
+  margin-top: 30px;
 }
 
 
@@ -231,8 +232,3 @@ a {
   text-decoration: none; 
 }
 
-@media only screen and (max-width: 600px) {
-  .logo {
-    margin-top: 50px; /* Ändern Sie den Abstand nach unten nach Ihren Bedürfnissen */
-  }
-}
