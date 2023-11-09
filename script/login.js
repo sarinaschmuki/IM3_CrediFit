@@ -25,7 +25,7 @@ loginForm.addEventListener("submit", async (e) => {
      localStorage.setItem('loggedInUser', JSON.stringify(user));
    
        
-        // Anmeldung erfolgreich, weiterleiten auf Screen3
-        window.location.href = "home.html";
+    // Anmeldung erfolgreich, weiterleiten auf Screen3
+     window.location.href = "home.html";
 }
 });

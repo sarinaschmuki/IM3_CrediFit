@@ -16,7 +16,7 @@
     <div class="container">
         <!-- Logo Container in anderen Container einbinden -->
         <div class="logo-container">
-            <span class="placeholder-left">Max Mustermann</span>
+            <span class="placeholder-left" id="username"></span>
             <a class="logout-button" href="login.html">Log Out</a>
             <img class="logo" src="Bilder/CreditFit.png" alt="Credifit Logo">
         </div>
@@ -57,7 +57,7 @@
             <select id="sportart" required> class="text-input">
                 <option value="" disabled selected>Sportart</option>
             </select>
-            <div id="errorMessage" style="color: red;"></div>
+            <p id="errorMessage" style="color: indianred;"></p>
         </div>
         <button id="saveSportSelection">Hinzufügen</button>
         <button class="overview-button" onclick="showOverview()">Übersicht deiner Sportaktivitäten</button></p>

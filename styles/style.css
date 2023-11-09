@@ -226,17 +226,21 @@ button {
 .sport-entries li:last-child {
   border-bottom: 2px solid;
 }
-
 .deleteAllEntriesButton {
+  margin-top: 0px; 
+  font-size: 12px; 
+  padding: 8px 16px;
+
+}
+.backToHomeButton{
   margin-top: 5px;
   padding: 10px 18px;
-  color: #000000;
   background-color: transparent;
   border: 2px solid;
+  border-color: #000000;
 }
-
 a {
-  color: white;
+  color: #000000;
   text-decoration: none; 
 }
 
