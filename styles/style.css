@@ -227,8 +227,17 @@ button {
   border-bottom: 2px solid;
 }
 
+.deleteAllEntriesButton {
+  margin-top: 5px;
+  padding: 10px 18px;
+  color: #000000;
+  background-color: transparent;
+  border: 2px solid;
+}
+
 a {
   color: white;
   text-decoration: none; 
 }
+
 
