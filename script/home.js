@@ -1,15 +1,40 @@
 import { supa } from "../config/config.js"; 
+
 // Startbildschirm - Hinzufügen der Sportart für den Benutzer
+// DOM Laden 
 document.addEventListener('DOMContentLoaded', async function () {
   try {
-   // Lade die verfügbaren Sportarten
+    // Lade die verfügbaren Sportarten
     await fetchSportarten();
-    await updateSportStunden();
     
+    // Anzeigen des Namens des Benutzers oben links 
+    if (localStorage.getItem('loggedInUser')) {
+      const userData = JSON.parse(localStorage.getItem('loggedInUser'));
+      getUser(userData.id);
+    }
+    // Lade die Stunden die der User hat
+    await updateSportStunden();
   } catch (error) {
     console.error("Fehler beim Laden der Seite:", error);
   }
 });
+
+// Funktion, um alle Daten des Benutzers abzurufen
+async function getUser(userID){
+  try {
+    const { data, error } = await supa.from("User").select().eq("user_id",userID);
+    if (error) {
+      console.error("Fehler beim Abrufen der Userdaten:", error);
+      return;
+    }
+    const currentUser = data[0].name;
+    const usernameElement = document.querySelector('.placeholder-left');
+    usernameElement.textContent = currentUser;
+
+} catch (error) {
+  console.error("Fehler beim Abrufen der Userdaten:", error);
+}
+}
  
 // Funktion, um den aktuellen Stand der Sportstunden beim Laden der Seite anzeigen
 async function updateSportStunden() {
@@ -41,46 +66,6 @@ async function updateSportStunden() {
     console.error("Fehler beim Aktualisieren der Sportstunden:", error);
   }
 }
-
-// Funktion, um die Sportstunden beim Laden der Seite zu aktualisieren
-document.addEventListener('DOMContentLoaded', async function () {
-  try {
-    // Lade die Sportarten
-    await fetchSportarten();
-    
-    // Aktualisiere die Sportstunden
-    await updateSportStunden();
-  } catch (error) {
-    console.error("Fehler beim Laden der Seite:", error);
-  }
-});
-
-// Anzeigen des Namens des Benutzers oben links 
-document.addEventListener('DOMContentLoaded', function() {
-  // Überprüfen, ob der Benutzer angemeldet ist (überprüfen Sie, ob der Name im Local Storage vorhanden ist)
-  if (localStorage.getItem('loggedInUser')) {
-      const userData = JSON.parse(localStorage.getItem('loggedInUser'));
-      getUser(userData.id);
-  }
-});
-
-// Funktion, um alle Daten des Benutzers abzurufen
-async function getUser(userID){
-  try {
-    const { data, error } = await supa.from("User").select().eq("user_id",userID);
-    if (error) {
-      console.error("Fehler beim Abrufen der Userdaten:", error);
-      return;
-    }
-    const currentUser = data[0].name;
-    const usernameElement = document.querySelector('.placeholder-left');
-    usernameElement.textContent = currentUser;
-
-} catch (error) {
-  console.error("Fehler beim Abrufen der Userdaten:", error);
-}
-}
-
 // Funktion, um Sportarten aus der Supabase-Tabelle abzurufen
 async function fetchSportarten() {
     try {
@@ -197,5 +182,3 @@ function updateRing(currentUserMinutes) {
     congratulationMessage.style.display = 'none'; // Meldung ausblenden
   }
 }
-// Rufe die Funktion auf, um Sportarten zu laden
-fetchSportarten();
